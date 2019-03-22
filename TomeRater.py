@@ -119,8 +119,8 @@ class Book(object):
         if isinstance(other_book, Book):
             return self.title == other_book.title and self.isbn == other_book.isbn
         else:
-            type=type(other_book)
-            print("{other_book} is of type: {type}, and should be a User type".format(other_book=other_book,type=type))
+            book_type=type(other_book)
+            print("{other_book} is of type: {type}, and should be a User type".format(other_book=other_book,type=book_type))
 
     def __hash__(self):
         """ Returns hash of book """
@@ -238,11 +238,11 @@ class TomeRater(object):
         """ Returns highest rated book """
         rating_max = 0
         best_rated_book = ""
-        for user in self.users.values():
-            rating = user.get_average_rating()
+        for book in self.books.keys():
+            rating = book.get_average_rating()
             if rating > rating_max:
                 rating_max = rating
-                best_rated_book = rating
+                best_rated_book = book
             else:
                 continue
         return best_rated_book
