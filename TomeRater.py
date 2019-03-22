@@ -177,7 +177,7 @@ class TomeRater(object):
         if isbn in isbn_list:
             print("ISBN {isbn} already exists.  Please provide a unique ISBN.".format(isbn=isbn))
         else:
-            return Fiction(title, isbn, author)
+            return Fiction(title, author, isbn)
 
     def create_non_fiction(self, title, subject, level, isbn):
         """ Returns Non-Fiction instance """
@@ -185,7 +185,7 @@ class TomeRater(object):
         if isbn in isbn_list:
             print("ISBN {isbn} already exists.  Please provide a unique ISBN.".format(isbn=isbn))
         else:
-            return Non_Fiction(title, isbn, subject, level)
+            return Non_Fiction(title, subject, level, isbn)
 
     def add_book_to_user(self, book, email, rating=None):
         """ Adds book and rating if exists """
