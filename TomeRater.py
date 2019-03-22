@@ -12,6 +12,7 @@ __docformat__ = "reStructuredText"
 
 class User(object):
     def __init__(self, name, email):
+        """ User constructor """
         self.name = name
         self.email = email
         self.books = {}
@@ -73,6 +74,7 @@ class User(object):
 
 class Book(object):
     def __init__(self, title, isbn):
+        """ Book Parent Class constructor """
         self.title = title
         self.isbn = isbn
         self.ratings = []
@@ -126,8 +128,8 @@ class Book(object):
 
 
 class Fiction(Book):
-    """ Fiction Book subclass """
     def __init__(self, title, author, isbn):
+        """ Fiction constructor """
         super().__init__(title, isbn)
         self.author = author
 
@@ -140,8 +142,8 @@ class Fiction(Book):
 
 
 class Non_Fiction(Book):
-    """ Fiction Book subclass """
     def __init__(self, title, subject, level, isbn):
+        """ Non-Fiction constructor """
         super().__init__(title, isbn)
         self.subject = subject
         self.level = level
@@ -160,6 +162,7 @@ class Non_Fiction(Book):
 
 class TomeRater(object):
     def __init__(self):
+        """ TomeRater constructor """
         self.users = {}
         self.books = {}
 
