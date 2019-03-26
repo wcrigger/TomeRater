@@ -32,7 +32,7 @@ class User(object):
     def change_email(self, address):
         """ Email address update """
         self.email = address
-        return "User {name}'s email address has been updated to {email}".format(name=self.name,email=self.email)
+        return "User {name}'s email address has been updated to {email}".format(name=self.name, email=self.email)
 
     def read_book(self, book, rating=None):
         """ Add read book to dict """
@@ -62,7 +62,7 @@ class User(object):
         count=0
         for item in self.books.keys():
             count += 1
-        return "User {name} with email address {email} has read {count} book(s) with an average rating of {rating}".format(name=self.name,email=self.email,count=count,rating=self.get_average_rating())
+        return "User {name} with email address {email} has read {count} book(s) with an average rating of {rating}".format(name=self.name, email=self.email, count=count, rating=self.get_average_rating())
 
     def __eq__(self, other_user):
         """ Is one of these items not like the other? """
@@ -91,7 +91,7 @@ class Book(object):
         """ ISBN update """
         original_isbn = self.isbn
         self.isbn = isbn
-        print("Updated {book}'s ISBN from {old} to {new}".format(book=self.title,old=original_isbn,new=self.isbn))
+        print("Updated {book}'s ISBN from {old} to {new}".format(book=self.title, old=original_isbn, new=self.isbn))
 
     def add_rating(self, rating):
         """ Adds a rating if it meets criteria """
@@ -120,7 +120,7 @@ class Book(object):
             return self.title == other_book.title and self.isbn == other_book.isbn
         else:
             book_type=type(other_book)
-            print("{other_book} is of type: {type}, and should be a User type".format(other_book=other_book,type=book_type))
+            print("{other_book} is of type: {type}, and should be a User type".format(other_book=other_book, type=book_type))
 
     def __hash__(self):
         """ Returns hash of book """
@@ -138,7 +138,7 @@ class Fiction(Book):
         return self.author
 
     def __repr__(self):
-        return "{book} by {author}".format(book=self.title,author=self.author)
+        return "{book} by {author}".format(book=self.title, author=self.author)
 
 
 class Non_Fiction(Book):
@@ -157,7 +157,7 @@ class Non_Fiction(Book):
         return self.subject
 
     def __repr__(self):
-        return "{book}, a {level} level book on {subject}.".format(book=self.title,level=self.level,subject=self.subject)
+        return "{book}, a {level} level book on {subject}.".format(book=self.title, level=self.level, subject=self.subject)
 
 
 class TomeRater(object):
@@ -204,7 +204,7 @@ class TomeRater(object):
         """ Adds user """
         user = self.users.get(email)
         if user:
-            print("{email} address already exists for user {name}.  Please use a different email address.".format(email=email,name=user.get_name()))
+            print("{email} address already exists for user {name}.  Please use a different email address.".format(email=email, name=user.get_name()))
         else:
             self.users.update({email: User(name, email)})
             if books:
@@ -265,7 +265,7 @@ class TomeRater(object):
         if type(n) != int:
             print("The argument n = {n} is not an integer.  Try again with an integer".format(n=n))
         else:
-            sorted_books = [ book for book in sorted(self.books,key=self.books.get,reverse=True)]
+            sorted_books = [ book for book in sorted(self.books, key=self.books.get, reverse=True)]
             return sorted_books
 
     def __repr__(self):
@@ -274,4 +274,4 @@ class TomeRater(object):
         most_read = self.most_read_book()
         highest_rated = self.highest_rated_book()
         most_positive = self.most_positive_user()
-        return "Number of books: {books} books.  Number of users: {users} users.  Most read book: {most_read}. High rated book (based on average rating): {highest_rated}.  Most positive reviews: {most_positive}.".format(books=num_books,users=num_users,most_read=most_read,highest_rated=highest_rated,most_positive=most_positive)
+        return "Number of books: {books} books.  Number of users: {users} users.  Most read book: {most_read}. High rated book (based on average rating): {highest_rated}.  Most positive reviews: {most_positive}.".format(books=num_books, users=num_users, most_read=most_read, highest_rated=highest_rated, most_positive=most_positive)
